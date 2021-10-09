@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shop
+  labels:
+    tier: flask-app
+    app: shop
+  namespace: assesment
+spec:
+  selector:
+    matchLabels:
+      env: occ
+  replicas: 1
+  template:
+    metadata:
+      name: shop
+      labels:
+        env: occ
+        app: shop
+    spec:
+      containers:
+        - name: shop
+          image: prabhu4029/assesment:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shop
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 8080
+  selector:
+    app: shop
+    env: occ
