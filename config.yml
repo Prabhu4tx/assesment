@@ -5,7 +5,6 @@ metadata:
   labels:
     tier: flask-app
     app: shop
-  namespace: assesment
 spec:
   selector:
     matchLabels:
