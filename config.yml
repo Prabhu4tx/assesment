@@ -34,3 +34,30 @@ spec:
   selector:
     app: shop
     env: occ
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: occ-ingress
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /shop
+          backend:
+            serviceName: shop
+            servicePort: 8080
+        - path: /cart
+          backend:
+            serviceName: cart
+            servicePort: 8080
+        - path: /payment
+          backend:
+            serviceName: payment
+            servicePort: 8080
+        - path: /checkout
+          backend:
+            serviceName: checkout
+            servicePort: 8080
