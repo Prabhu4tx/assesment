@@ -28,7 +28,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - targetPort: 8080
+    - name: shop
+      protocol: TCP
+      targetPort: 8080
       port: 8080
   selector:
     app: shop
@@ -64,7 +66,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - targetPort: 8080
+    - name: cart
+      protocol: TCP
+      targetPort: 8080
       port: 8080
   selector:
     app: cart
@@ -100,7 +104,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - targetPort: 8080
+    - name: payment
+      protocol: TCP
+      targetPort: 8080
       port: 8080
   selector:
     app: payment
@@ -136,7 +142,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - targetPort: 8080
+    - name: checkout
+      protocol: TCP
+      targetPort: 8080
       port: 8080
   selector:
     app: checkout
